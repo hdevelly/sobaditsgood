@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Knewave');
 @import url('https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 
+/* Paramètres généraux */
 body{
     margin: 0;
     padding: 0;
@@ -8,9 +10,19 @@ body{
     color: white;
 }
 
+#global-wrapper{
+    background-color: rgba(0, 0, 0, .7);
+    border-top: thin solid black;
+}
+
+input[type='text']{
+    font-family: "Oswald", Arial, Helvetica, sans-serif;
+}
+
+/* Header */
 #main-header{
     font-family: 'Knewave', 'Arial', sans-serif;
-    color: rgb(105, 90, 50);
+    color: rgb(135, 100, 65);
     text-align: center;
     font-size: 60pt;
     margin: .5rem auto auto;
@@ -18,16 +30,17 @@ body{
 
 #sub-header{
     font-family: 'Love Ya Like A Sister', 'Arial', sans-serif;
-    color: rgb(105, 90, 50);
+    color: rgb(175, 145, 115);
     font-size: 44pt;
     text-align: center;
     margin: auto;
     transform: rotate(-17deg);
     border: thick solid rgb(60, 95, 50);
-    border-radius: 5px;
+    border-radius: 15px;
     max-width: 250px;
     padding: .25rem .5rem;
     margin-bottom: 2rem;
+    filter: drop-shadow(3px 3px 2px black);
 }
 
 .icon{
@@ -35,17 +48,77 @@ body{
     object-fit: contain;
 }
 
+header nav{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+header nav a{
+    display:block;
+    height: 80px;
+    background-size:contain;
+    text-align: center;
+    font-family: 'Love Ya Like A Sister', 'Arial', sans-serif;
+    color: rgb(175, 145, 115);
+    text-decoration: none;
+    text-shadow: 2px 2px 2px black;
+    font-size: 30pt;
+    padding-top: 1rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 1rem;
+}
+
+#nav-connection{
+    background-image: url('../img/icons/chestnut.png');
+}
+
+#nav-quizz{
+    background-image: url('../img/icons/mapleleaf.png');
+}
+
+#nav-leaderboard{
+    background-image: url('../img/icons/honeypot.png');
+}
+
+/*Module quizz*/
+#wrapper-categories{
+    width:25%;
+    margin:auto;
+    padding-top: 1rem;
+}
+
+#wrapper-categories *{
+    font-family: 'Love Ya Like A Sister', 'Arial', sans-serif;
+    color: rgb(175, 145, 115);
+    font-size: 24pt;
+}
+
+
+#wrapper-categories select{
+    border: 3px solid rgb(135, 100, 65);
+    border-radius: 5px;
+    background-color: rgba(135, 100, 65, .2);
+    margin-left: 1rem;
+    text-align: center;
+}
+
 #wrapper-quizz{
     width: 95%;
     margin: 2rem auto auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5%;
 }
 
 .song{
     padding: 1rem;
-    margin-bottom: 2rem;
+    margin: auto auto 2rem;
+    border: thin solid black;
+    background-color: rgba(0,0,0, .5);
+    width: 60%;
 }
+
 .song *{
     display: block;
     margin: auto;
@@ -61,12 +134,16 @@ body{
 }
 
 .song input[type='text']{
-    margin-top: 1.25rem;
-    background-color: rgba(175, 35, 135, .1);
+    margin-top: 2rem;
+    background-color: rgba(100, 145, 85, .1);
     border-radius: 3px;
-    border: thin solid rgb(175, 35, 135);
+    border: 2px solid rgb(100, 145, 85);
+    color:rgb(100, 145, 85);
+    font-size: 14pt;
+    text-align: center;
 }
 
 .song input[type='text']:focus{
-    background-color: rgba(175, 35, 135, .5);
+    background-color: rgba(100, 145, 85, .5);
+    color: black;
 }
