@@ -3,17 +3,25 @@
 	<head>
 		<title>Accueil</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<script type="text/javascript" href="script/script.js"></script>
+		<link rel="stylesheet" type="text/css" href="src/css/style.css">
+		<script type="text/javascript" href="src/script/script.js"></script>
 	</head>
 
 	<body>
         <header>
-            <h1>Ton header ma gueule</h1>
+            <div id='main-header'>Music that's so bad it's good</div>
+            <div id='sub-header'>8-bit Version</div>
             <nav>
-                <a href="#">Un lien</a>
-                <a href="#">Un autre lien</a>
-                <a href="#">Encore un lien</a>
+                <a class='nav-button' href="#">Connexion/Inscription</a>
+                <label for="nav-categories">Catégorie :</label>
+                <select id="nav-categories">
+                    <option selected disabled='true'>--Choisir--</option>
+                    <option>Toutes</option>
+                    <option>80s</option>
+                    <option>90s</option>
+                    <option>2000s</option>
+                </select>
+                <a class='nav-button' href="#">Leader Board</a>
             </nav>
         </header>
         <div id='global-wrapper'>
