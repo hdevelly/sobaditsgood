@@ -1,5 +1,6 @@
 console.log('coucou');
 window.onload = function(){
+    console.log('yolo');
     var selectedCategory;
     var selectElement = document.getElementById('nav-categories').options[document.getElementById('nav-categories').selectedIndex].text;
     var wrapper = document.getElementById('global-wrapper');
@@ -8,7 +9,7 @@ window.onload = function(){
         var selectedCategory = selectElement.options[document.getElementById('nav-categories').selectedIndex].text;
     }
 
-    selectElement.on('click', getSelectedElement);
+    //selectElement.addEventListener('click', getSelectedElement);
 
     // Chargement du module
     var xhr= new XMLHttpRequest();
