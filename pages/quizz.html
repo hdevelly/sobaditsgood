@@ -1,37 +1,54 @@
-<div id='wrapper-categories'>
-    <label for="categories">Catégorie :</label>
-    <select id="categories">
-        <option selected disabled='true'>--Choisir--</option>
-        <option>Toutes</option>
-        <option>80s</option>
-        <option>90s</option>
-        <option>2000s</option>
-    </select>
-</div>
-<div id='wrapper-quizz'>
-    <div class='song'>
-        <img class='thumbnail secret' src='src/img/Boetie.png'/>
-        <input type='text' class='answer'/>
-    </div>
-    <div class='song'>
-        <img class='thumbnail secret' src='src/img/MyOhMy.png'/>
-        <input type='text' class='answer'/>
-    </div>
-    <div class='song'>
-        <img class='thumbnail secret' src='src/img/PourQueTuMaimesEncore.png'/>
-        <input type='text' class='answer'/>
-    </div>
-    <div class='song'>
-            <img class='thumbnail secret' src='src/img/PourQueTuMaimesEncore.png'/>
-            <input type='text' class='answer'/>
-    </div>
-</div>
-<button id='validate-quizz'>Valider</button><!--
+<!DOCTYPE html>
+<html lang='fr'>
+	<head>
+		<title>Quizz</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="../src/css/style.css">
+		<script type="text/javascript" src="../src/script/quizz.js"></script>
+	</head>
 
-
-
-    <script>
-        window.onload = function(){
-        };
-    </script>
-       -->
+	<body>
+        <header>
+            <div id='main-header'>Music that's so bad it's good</div>
+            <div id='sub-header'>
+                <img class='icon' src='../src/img/icons/bear.png'/>
+                & <img class='icon' src='../src/img/icons/hamster.png'/> Versions</div>
+            <nav>
+                <a id='nav-connection' href="#">Connexion/Inscription</a>
+                <a id='nav-quizz' href="#">Quizz</a>
+                <a id='nav-leaderboard' href="#">Leader Board</a>
+            </nav>
+        </header>
+        <div id='global-wrapper'>
+            <div id='wrapper-categories'>
+                <label for='categories'>Catégorie :</label>
+                <select id='categories'>
+                    <option>--Choisir--</option>
+                    <option value='1'>Toutes</option>
+                    <option value='80'>80s</option>
+                    <option value='90'>90s</option>
+                    <option value='2000'>2000s</option>
+                </select>
+            </div>
+            <div id='wrapper-quizz'>
+                <div class='song'>
+                    <img class='thumbnail secret' src='src/img/Boetie.png'/>
+                    <input type='text' class='answer'/>
+                </div>
+                <div class='song'>
+                    <img class='thumbnail secret' src='src/img/MyOhMy.png'/>
+                    <input type='text' class='answer'/>
+                </div>
+                <div class='song'>
+                    <img class='thumbnail secret' src='src/img/PourQueTuMaimesEncore.png'/>
+                    <input type='text' class='answer'/>
+                </div>
+                <div class='song'>
+                        <img class='thumbnail secret' src='src/img/PourQueTuMaimesEncore.png'/>
+                        <input type='text' class='answer'/>
+                </div>
+            </div>
+            <button id='validate-quizz'>Valider</button>
+        </div>
+	</body>
+</html>
