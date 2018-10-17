@@ -1,5 +1,5 @@
 var selectedCategory;
-
+var selectedSongs;
 const tubes = [
     {
         titre: "Ohio",
@@ -87,16 +87,34 @@ const tubes = [
     }
 ];
 
-console.log("Je suis dans le quizz");
-
 window.onload = function(){
 
-    function stopTune(event){
+    function cleanText(text){
+        let cleanedText = text.toLowerCase();
+        cleanedText = cleanedText.replace(new RegExp(/[àáâ]/g),"a");
+        cleanedText = cleanedText.replace(new RegExp(/[èéê]/g),"e");
+        return cleanedText;
+    }
+
+    function checkScore(){
+        let answers = document.querySelectorAll('.answer');
+        let total = answers.length;
+        let score = 0;
+
+        for(i=0; i < answers.length; i++){
+            if(cleanText(answers[i].value) === cleanText(selectedSongs[i].titre)){
+                score++;
+            }
+        }
+        console.log(score);
+    }
+
+    function stopTune(){
         let audio = this.nextSibling;
         audio.pause();
     }
 
-    function playTune(event){
+    function playTune(){
         let audio = this.nextSibling;
         audio.currentTime = Math.random()*audio.duration;
         audio.play();
@@ -105,7 +123,7 @@ window.onload = function(){
     function buildVignettes(array){
         let vignettes = "";
         array.forEach(function(element){
-            vignettes += "<div class='song'><img class='thumbnail secret' src='../src/img/" + element.path + ".png'/>";
+            vignettes += "<div class='song'><img class='thumbnail secret' src='../src/img/singles/" + element.path + ".png'/>";
             vignettes += "<audio src='../src/sound/" + element.path + ".mp3'></audio>";
             vignettes += "<input type='text' class='answer'/></div>";
         });
@@ -121,13 +139,13 @@ window.onload = function(){
     }
 
     function loadSongs(){
-        let songsArray = JSON.parse(JSON.stringify(tubes));
+        selectedSongs = JSON.parse(JSON.stringify(tubes));
         let htmlNode = "";
         if(selectedCategory != 1){
-            songsArray = filterArray(songsArray, {categorie : selectedCategory});
+            selectedSongs = filterArray(selectedSongs, {categorie : selectedCategory});
         }
         
-        htmlNode =  buildVignettes(songsArray);
+        htmlNode =  buildVignettes(selectedSongs);
         document.getElementById('wrapper-quizz').innerHTML = htmlNode;
 
     }
@@ -146,6 +164,18 @@ window.onload = function(){
             node.addEventListener('mouseenter', playTune);
             node.addEventListener('mouseleave', stopTune);
         });
+    });
+
+    document.getElementById('validate-quizz').addEventListener('click', checkScore);
+    
+    document.getElementById('icon-help').addEventListener('click', function(){
+        this.classList.add('hidden');
+        document.getElementById('lumber-help').classList.remove('hidden');
+    });
+
+    document.getElementById('lumber-help').addEventListener('click', function(){
+        this.classList.add('hidden');
+        document.getElementById('icon-help').classList.remove('hidden');
     });
 
 

@@ -91,6 +91,13 @@ header nav a{
     background-image: url('../img/icons/honeypot.png');
 }
 
+/*Accueil*/
+#lumber-welcome{
+    max-height: 45vh;
+    left: 33vw;
+    position: absolute;
+}
+
 /*Module quizz*/
 #wrapper-categories{
     width:25%;
@@ -122,7 +129,7 @@ header nav a{
 }
 
 .song{
-    padding: 1rem;
+    padding: 3rem .5rem;
     margin: auto auto 2rem;
     border: thin solid black;
     background-color: rgba(0,0,0, .5);
@@ -161,4 +168,35 @@ header nav a{
 #validate-quizz{
     display: block;
     margin: 2rem auto;
+}
+
+#icon-help, #icon-close{
+    max-width: 7vh;
+    cursor: pointer;
+}
+
+#icon-help {
+	position: fixed;
+	left: 20px;
+    bottom: 20px;
+}
+
+#lumber-help {
+    position: fixed;
+    top: 15vh;
+    left: 35vw;
+    filter: drop-shadow(5px 5px 3px black);
+    height: 645px;
+    width: 365px;
+    background-image: url('../img/lumbers/help-lumber.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    z-index: 2;
+}
+
+#icon-close{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
