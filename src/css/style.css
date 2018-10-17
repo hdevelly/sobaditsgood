@@ -29,10 +29,12 @@ input[type='text']{
 }
 
 #sub-header{
+    display:block;
     font-family: 'Love Ya Like A Sister', 'Arial', sans-serif;
     color: rgb(175, 145, 115);
     font-size: 44pt;
     text-align: center;
+    text-decoration: none;
     margin: auto;
     transform: rotate(-17deg);
     border: thick solid rgb(60, 95, 50);
