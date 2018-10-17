@@ -24,7 +24,7 @@
             <div id='wrapper-categories'>
                 <label for='categories'>Catégorie :</label>
                 <select id='categories'>
-                    <option>--Choisir--</option>
+                    <option selected disabled>--Choisir--</option>
                     <option value='1'>Toutes</option>
                     <option value='80'>80s</option>
                     <option value='90'>90s</option>
@@ -32,24 +32,8 @@
                 </select>
             </div>
             <div id='wrapper-quizz'>
-                <div class='song'>
-                    <img class='thumbnail secret' src='../src/img/Boetie.png'/>
-                    <input type='text' class='answer'/>
-                </div>
-                <div class='song'>
-                    <img class='thumbnail secret' src='../src/img/MyOhMy.png'/>
-                    <input type='text' class='answer'/>
-                </div>
-                <div class='song'>
-                    <img class='thumbnail secret' src='../src/img/PourQueTuMaimesEncore.png'/>
-                    <input type='text' class='answer'/>
-                </div>
-                <div class='song'>
-                        <img class='thumbnail secret' src='../src/img/PourQueTuMaimesEncore.png'/>
-                        <input type='text' class='answer'/>
-                </div>
             </div>
-            <button id='validate-quizz'>Valider</button>
+            <button id='validate-quizz' class='hidden'>Valider</button>
         </div>
 	</body>
 </html>

@@ -7,16 +7,24 @@ body{
     margin: 0;
     padding: 0;
     background-image: url('../img/background.png');
+    background-repeat: no-repeat;
+    background-color: black;
     color: white;
 }
 
 #global-wrapper{
     background-color: rgba(0, 0, 0, .7);
     border-top: thin solid black;
+    min-height: 45vh;
+    padding: 2rem 0;
 }
 
 input[type='text']{
     font-family: "Oswald", Arial, Helvetica, sans-serif;
+}
+
+.hidden{
+    opacity: 0;
 }
 
 /* Header */
@@ -90,14 +98,14 @@ header nav a{
     padding-top: 1rem;
 }
 
-#wrapper-categories *{
+#wrapper-categories *, #validate-quizz{
     font-family: 'Love Ya Like A Sister', 'Arial', sans-serif;
     color: rgb(175, 145, 115);
     font-size: 24pt;
 }
 
 
-#wrapper-categories select{
+#wrapper-categories select, #validate-quizz{
     border: 3px solid rgb(135, 100, 65);
     border-radius: 5px;
     background-color: rgba(135, 100, 65, .2);
@@ -148,4 +156,9 @@ header nav a{
 .song input[type='text']:focus{
     background-color: rgba(100, 145, 85, .5);
     color: black;
+}
+
+#validate-quizz{
+    display: block;
+    margin: 2rem auto;
 }
