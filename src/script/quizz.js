@@ -106,6 +106,7 @@ window.onload = function(){
                 score++;
             }
         }
+        score = score*100/answers.length;
         console.log(score);
     }
 
@@ -156,7 +157,7 @@ window.onload = function(){
     
     //Écouteurs
     document.getElementById('categories').addEventListener('change', function(){
-        document.getElementById('validate-quizz').classList.remove('hidden');
+        document.getElementById('validate-quizz').classList.remove('masked');
         getSelectedElement();
         loadSongs();
         let nodes = document.querySelectorAll('.thumbnail');

@@ -23,8 +23,12 @@ input[type='text']{
     font-family: "Oswald", Arial, Helvetica, sans-serif;
 }
 
-.hidden{
+.masked{
     opacity: 0;
+}
+
+.hidden{
+    display: none;
 }
 
 /* Header */
