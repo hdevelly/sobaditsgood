@@ -2,10 +2,8 @@ const http = require("http");
 const fs = require('fs'); //filesystem
 const url = require('url');
 const { parse } = require('querystring');
-const { Server } = require('ws');
 
 const httpserver = http.createServer();
-const wss = new Server({ server: httpserver });
 
 var users = [
     {
@@ -56,11 +54,18 @@ httpserver.on('request', (requete, reponse) => {
                 });
                 requete.on('end', () =>{
                     const bodyParsed = parse(body);
-                    users.push({ username: bodyParsed.username, password: bodyParsed.password, score: 0 });
-                    //console.log(parse(body)["username"]);
-                    console.log(users);
-
-                    reponse.end(JSON.stringify({ username: bodyParsed.username }));
+                    for(var i=0;i<users.length;i++){
+                        if(bodyParsed.username != users[i]["username"]){
+                            console.log("okk let's go");
+                            users.push({ username: bodyParsed.username, password: bodyParsed.password, score: 0 });
+                            console.log(users);
+                            break;
+                        }
+                        else{
+                            console.log("try again");
+                            reponse.end("User already exist. Choose an other username");
+                        }
+                    }
                 });
             } else {
                 readStream('/pages/connection.html');
