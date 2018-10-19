@@ -1,5 +1,5 @@
 window.onload = function(){
-    var inscription = 0;
+    let inscription = 0;
 
     function afficherFormulaire(statut){
         let formConnect = document.getElementById("form-connexion");

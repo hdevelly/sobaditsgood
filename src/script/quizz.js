@@ -187,6 +187,8 @@ window.onload = function(){
         nodes.forEach(function(node){
             node.addEventListener('mouseenter', playTune);
             node.addEventListener('mouseleave', stopTune);
+            node.addEventListener('touchenter', playTune);
+            node.addEventListener('touchleave', stopTune);
         });
     });
 
