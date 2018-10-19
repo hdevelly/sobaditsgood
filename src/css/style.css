@@ -349,6 +349,10 @@ form input[type="submit"]{
     .icon{
         max-height: 2rem;
     }
+
+    .thumbnail {
+        max-height: 150px;
+    }
     
     header nav a{
         height: 40px;
@@ -361,6 +365,22 @@ form input[type="submit"]{
 
     #wrapper-categories {
         width: 80%;
+    }
+
+    #lumber-help {
+        left: 15vw;
+        height: 400px;
+        width: 200px;
+    }
+
+    #lumber-end {
+        left: 2.5%;
+        width: 95%;
+    }
+
+    #icon-close {
+        top: 45px;
+        right: -5px;
     }
 
 }
