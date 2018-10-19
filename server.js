@@ -4,21 +4,27 @@ const url = require('url');
 const { parse } = require('querystring');
 const { Server } = require('ws');
 
-const server = http.createServer();
-server.listen(8080);
-server.on('request', (requete, reponse) => {
-    var users = [
-        {
-            "username": "toto",
-            "password": "toto",
-            "score": 0
-        },
-        {
-            "username": "tata",
-            "password": "tata",
-            "score": 0
-        }
-    ];
+const httpserver = http.createServer();
+const wss = new Server({ server: httpserver });
+
+var users = [
+    {
+        "username": "toto",
+        "password": "toto",
+        "score": 0
+    },
+    {
+        "username": "tata",
+        "password": "tata",
+        "score": 0
+    }
+];
+
+
+httpserver.listen(8080);
+httpserver.on('request', (requete, reponse) => {
+    const urlParses = url.parse(requete.url);
+
     function readStream(chemin){
         const readStream = fs.createReadStream(__dirname+chemin); //renvoie un stream
         readStream.on('data', data => reponse.write(data)); // on lit le fichier tant qu'il y a des données à lire
@@ -35,7 +41,7 @@ server.on('request', (requete, reponse) => {
             console.log("try again");
         }
     }*/
-    switch(requete.url) { // on récupère l'url
+    switch(urlParses.pathname) { // on récupère l'url
         case '/':
             readStream('/index.html');
         break;
@@ -43,17 +49,21 @@ server.on('request', (requete, reponse) => {
             readStream('/pages/quizz.html');
         break;
         case '/pages/connection.html':
-            readStream('/pages/connection.html');
             if (requete.method === 'POST') {
                 var body='';
                 requete.on('data', form =>{
                     body+=form.toString();
                 });
                 requete.on('end', () =>{
-                    users.push({username:parse(body)["username"], password:parse(body)["password"], score:0});
+                    const bodyParsed = parse(body);
+                    users.push({ username: bodyParsed.username, password: bodyParsed.password, score: 0 });
                     //console.log(parse(body)["username"]);
                     console.log(users);
+
+                    reponse.end(JSON.stringify({ username: bodyParsed.username }));
                 });
+            } else {
+                readStream('/pages/connection.html');
             }
         break;
         case '/pages/leaderboard.html':
