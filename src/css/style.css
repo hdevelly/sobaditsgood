@@ -19,8 +19,9 @@ body{
     padding: 2rem 0;
 }
 
-input[type='text']{
+input{
     font-family: "Oswald", Arial, Helvetica, sans-serif;
+    text-align: center;
 }
 
 .masked{
@@ -100,6 +101,45 @@ header nav a{
     max-height: 45vh;
     left: 33vw;
     position: absolute;
+}
+
+/*Module connexion*/
+form {
+    width: 40vw;
+    margin: auto;
+    border: thin solid black;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, .5);
+    padding: .5rem 1.75rem;
+}
+
+form input, #subscribe {
+    display: block;
+    color: rgb(135, 100, 65);
+    font-size: 18pt;
+}
+
+form input {
+    width: 66%;
+    margin: .5rem auto;
+}
+
+form input[type="submit"], #subscribe{
+    border: 2px solid rgb(135, 100, 65);
+    border-radius: 5px;
+    font-family: 'Love Ya Like A Sister', 'Arial', sans-serif;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+}
+
+form input[type="submit"]{
+    margin-top: 1rem;
+    width: 33%;
+}
+
+#subscribe {
+    padding: .25rem .5rem;
+    margin: 2rem auto auto;
 }
 
 /*Module quizz*/
