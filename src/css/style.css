@@ -109,7 +109,7 @@ header nav a{
     padding-top: 1rem;
 }
 
-#wrapper-categories *, #validate-quizz{
+#wrapper-categories *, #validate-quizz, #lumber-end p{
     font-family: 'Love Ya Like A Sister', 'Arial', sans-serif;
     color: rgb(175, 145, 115);
     font-size: 24pt;
@@ -172,6 +172,7 @@ header nav a{
 #validate-quizz{
     display: block;
     margin: 2rem auto;
+    padding: .15em .5em;
 }
 
 #icon-help, #icon-close{
@@ -185,6 +186,13 @@ header nav a{
     bottom: 20px;
 }
 
+#lumber-help, #lumber-end {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    z-index: 2;
+}
+
 #lumber-help {
     position: fixed;
     top: 15vh;
@@ -192,15 +200,29 @@ header nav a{
     filter: drop-shadow(5px 5px 3px black);
     height: 645px;
     width: 365px;
-    background-image: url('../img/lumbers/help-lumber.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    z-index: 2;
+    background-image: url('../img/lumbers/help-lumber.png');  
 }
 
-#icon-close{
+#icon-close {
     position: absolute;
     top: 0;
     right: 0;
+}
+
+#lumber-end {
+    position: fixed;
+    top: 20%;
+    left: 25%;
+    height: 60%;
+    width: 50%;
+    filter: drop-shadow(10px 10px 5px black);
+    cursor: pointer;
+}
+
+#lumber-end p{
+    text-shadow: 2px 2px white;
+    font-size: 30pt;
+    position: absolute;
+    left: 45%;
+    bottom: 15%;
 }
