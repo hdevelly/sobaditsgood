@@ -28,17 +28,6 @@ httpserver.on('request', (requete, reponse) => {
         readStream.on('data', data => reponse.write(data)); // on lit le fichier tant qu'il y a des données à lire
         readStream.on('end', () => reponse.end());
     }
-    /*for(var i=0;i<users.length;i++){
-        const parse = url.parse(requete.url, true);
-        parse.query;
-        if(parse.query["username"] === users[i]["username"] && parse.query["password"] === users[i]["password"]){
-            console.log("okk let's go");
-            break;
-        }
-        else{
-            console.log("try again");
-        }
-    }*/
     switch(urlParses.pathname) { // on récupère l'url
         case '/':
             readStream('/index.html');
@@ -53,18 +42,23 @@ httpserver.on('request', (requete, reponse) => {
                     body+=form.toString();
                 });
                 requete.on('end', () =>{
+                    var flag=false;
                     const bodyParsed = parse(body);
                     for(var i=0;i<users.length;i++){
-                        if(bodyParsed.username != users[i]["username"]){
-                            console.log("okk let's go");
-                            users.push({ username: bodyParsed.username, password: bodyParsed.password, score: 0 });
-                            console.log(users);
+                        if(bodyParsed.username == users[i]["username"]){
+                            console.log("try again");
+                            reponse.end("User already exist. Choose an other username");
+                            flag=false;
                             break;
                         }
                         else{
-                            console.log("try again");
-                            reponse.end("User already exist. Choose an other username");
+                            flag=true;
                         }
+                    }
+                    if(flag){
+                        console.log("okk let's go");
+                        users.push({ username: bodyParsed.username, password: bodyParsed.password, score: 0 });
+                        console.log(users);
                     }
                 });
             } else {
