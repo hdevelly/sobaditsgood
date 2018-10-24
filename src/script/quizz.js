@@ -96,6 +96,28 @@ window.onload = function(){
         return cleanedText;
     }
 
+    function getLumber(score){
+        let lumberBlock = document.getElementById('lumber-end');
+        let lumber = "score-lumber-";
+
+        if (score >= 85) {
+            lumber += "04";
+        } else if (score >= 55) {
+            lumber += "03";
+        } else if (score >= 30) {
+            lumber += "02";
+        } else {
+            lumber += "01";
+        }
+        
+        lumberBlock.style.backgroundImage = "url('../src/img/lumbers/" + lumber + ".png')";
+        lumberBlock.childNodes[1].textContent = "Score : " + score + "%";
+        lumberBlock.classList.remove('hidden');
+        lumberBlock.addEventListener('click', function(){
+            lumberBlock.classList.add('hidden');
+        });
+    }
+
     function checkScore(){
         let answers = document.querySelectorAll('.answer');
         let total = answers.length;
@@ -106,7 +128,9 @@ window.onload = function(){
                 score++;
             }
         }
+        score = score*100/answers.length;
         console.log(score);
+        getLumber(score);
     }
 
     function stopTune(){
@@ -163,6 +187,8 @@ window.onload = function(){
         nodes.forEach(function(node){
             node.addEventListener('mouseenter', playTune);
             node.addEventListener('mouseleave', stopTune);
+            node.addEventListener('touchenter', playTune);
+            node.addEventListener('touchleave', stopTune);
         });
     });
 

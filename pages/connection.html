@@ -21,7 +21,18 @@
             </nav>
         </header>
         <div id='global-wrapper'>
-            <!---->
+            <form id='form-connexion' action="/pages/connection.html" method="POST">
+                <input type="text" name="username" placeholder="Nom d'utilisateur">
+                <input type="password" name="password" placeholder="Mot de passe">
+                <input type="submit" name="submitButton" value="Se connecter">
+            </form>
+            <form id='form-subscription' action="/pages/connection.html" class="hidden" method="POST">
+                <input type="text" name="username" placeholder="Nom d'utilisateur">
+                <input type="password" name="password" placeholder="Mot de passe">
+                <input type="password" name="password-confirm" placeholder="Confirmer mot de passe">
+                <input type="submit" name="submitButton" value="S'inscrire">
+            </form>
+            <button id="subscribe">S'inscrire</button>
         </div>
 	</body>
 </html>
