@@ -6,84 +6,84 @@ const tubes = [
         auteur: "Isabelle Adjani",
         categorie: 80,
         path: "80AO",
-        valeur: 3
+        type: 'o'
     },
     {
         titre: "Take On Me",
         auteur: "a-ha",
         categorie: 80,
         path: "80AT",
-        valeur: 3
+        type: 'c'
     },
     {
         titre: "Maniac",
         auteur: "Michael Sembello",
         categorie: 80,
         path: "80SM",
-        valeur: 3
+        type: 'c'
     },
     {
         titre: "Boule de Flipper",
         auteur: "Corynne Charby",
         categorie: 80,
         path: "80CB",
-        valeur: 3
+        type: 'o'
     },
     {
         titre: "Oops!... I Did It Again",
         auteur: "Britney Spears",
         categorie: 90,
         path: "90SO",
-        valeur: 3
+        type: 'o'
     },
     {
         titre: "Mon papa à moi",
         auteur: "Stomy Bugsy",
         path: "90BM",
         categorie: 90,
-        valeur: 3
+        type: 'c'
     },
     {
         titre: "Partir un jour",
         auteur: "2be3",
         categorie: 90,
         path: "902P",
-        valeur: 3
+        type: 'c'
     },
     {
         titre: "Pour que tu m'aimes encore",
         auteur: "Céline Dion",
         categorie: 90,
         path: "90DP",
-        valeur: 3
+        type: 'o'
     },
     {
         titre: "Dragostea Din Tei",
         auteur: "O-Zone",
         categorie: 2000,
         path: "2000OD",
-        valeur: 3
+        type: 'c'
     },
     {
         titre: "Les Sardines",
         auteur: "Patrick Sébastien",
         categorie: 2000,
         path: "2000SL",
-        valeur: 3
+        type: 'c'
     },
     {
         titre: "Lady Marmelade",
         auteur: ["Christina Aguilera", "Lil'Kim", "Mya", "Pink"],
         categorie: 2000,
         path: "2000ML",
-        valeur: 3
+        type: 'o'
     },
     {
         titre: "I Kissed a Girl",
         auteur: "Katy Perry",
         categorie: 2000,
         path: "2000PI",
-        valeur: 3
+        type: 'o'
     }
 ];
 
@@ -134,11 +134,13 @@ window.onload = function(){
     }
 
     function stopTune(){
+        this.previousSibling.classList.add('hidden');
         let audio = this.nextSibling;
         audio.pause();
     }
 
     function playTune(){
+        this.previousSibling.classList.remove('hidden');
         let audio = this.nextSibling;
         audio.currentTime = Math.random()*audio.duration;
         audio.play();
@@ -147,7 +149,10 @@ window.onload = function(){
     function buildVignettes(array){
         let vignettes = "";
         array.forEach(function(element){
-            vignettes += "<div class='song'><img class='thumbnail secret' src='../src/img/singles/" + element.path + ".png'/>";
+            vignettes += "<div class='song'>";
+            vignettes += "<img class='animal hidden' src='../src/img/icons/";
+            vignettes += element.type ==='c' ? 'hamster' : 'bear';
+            vignettes += "_song.png'/><img class='thumbnail secret' src='../src/img/singles/" + element.path + ".png'/>";
             vignettes += "<audio src='../src/sound/" + element.path + ".mp3'></audio>";
             vignettes += "<input type='text' class='answer'/></div>";
         });
