@@ -47,7 +47,6 @@ httpserver.on('request', (requete, reponse) => {
                     for(var i=0;i<users.length;i++){
                         if(bodyParsed.username == users[i]["username"]){
                             console.log("try again");
-                            reponse.end("User already exist. Choose an other username");
                             flag=false;
                             break;
                         }
@@ -59,6 +58,10 @@ httpserver.on('request', (requete, reponse) => {
                         console.log("okk let's go");
                         users.push({ username: bodyParsed.username, password: bodyParsed.password, score: 0 });
                         console.log(users);
+                        readStream('/pages/quizz.html');
+                    }
+                    else{
+                        readStream('/pages/connection.html');
                     }
                 });
             } else {
