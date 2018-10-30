@@ -44,24 +44,46 @@ httpserver.on('request', (requete, reponse) => {
                 requete.on('end', () =>{
                     var flag=false;
                     const bodyParsed = parse(body);
-                    for(var i=0;i<users.length;i++){
-                        if(bodyParsed.username == users[i]["username"]){
-                            console.log("try again");
-                            flag=false;
-                            break;
+                    if(bodyParsed.submitButton == "S\'inscrire"){
+                        for(var i=0;i<users.length;i++){
+                            if(bodyParsed.username == users[i]["username"]){
+                                console.log("try again");
+                                flag=false;
+                                break;
+                            }
+                            else{
+                                flag=true;
+                            }
+                        }
+                        if(flag){
+                            console.log("okk let's go");
+                            console.log(bodyParsed.submitButton);
+                            users.push({ username: bodyParsed.username, password: bodyParsed.password, score: 0 });
+                            console.log(users);
+                            readStream('/pages/quizz.html');
                         }
                         else{
-                            flag=true;
+                            readStream('/pages/connection.html');
                         }
                     }
-                    if(flag){
-                        console.log("okk let's go");
-                        users.push({ username: bodyParsed.username, password: bodyParsed.password, score: 0 });
-                        console.log(users);
-                        readStream('/pages/quizz.html');
-                    }
-                    else{
-                        readStream('/pages/connection.html');
+                    else if(bodyParsed.submitButton == "Se connecter"){
+                        for(var i=0;i<users.length;i++){
+                            if(bodyParsed.username == users[i]["username"] && bodyParsed.password == users[i]["password"]){
+                                console.log("OKK t'existe + bon mot de passe");
+                                flag=true;
+                                break;
+                            }
+                            else{
+                                console.log("Compte ou mot de passe incorrect");
+                                flag=false;
+                            }
+                        }
+                        if(flag){
+                            readStream('/pages/quizz.html');
+                        }
+                        else{
+                            readStream('/pages/connection.html');
+                        }
                     }
                 });
             } else {

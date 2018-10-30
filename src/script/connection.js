@@ -20,4 +20,21 @@ window.onload = function(){
         inscription == 0 ? inscription = 1 : inscription = 0;
         afficherFormulaire(inscription);
     });
+
+    var xhr;
+    xhr = new XMLHttpRequest();
+    xhr.responseType="json";
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === XMLHttpRequest.DONE){
+            if(xhr.status === 200){
+                alert(xhr.responseText);
+            }
+            else{
+                alert("there is a problem with the request");
+            }
+        }
+    };
+    xhr.open("POST", "/server.js");
+    xhr.send("test");
 };
